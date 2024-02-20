@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		FC89443B2B8438B50021A602 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = FC89443A2B8438B50021A602 /* main.c */; };
+		FC89444D2B8439840021A602 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC89444C2B8439840021A602 /* libglfw3.a */; };
+		FC8944502B8439960021A602 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC89444F2B8439960021A602 /* OpenGL.framework */; };
+		FC8944522B84399E0021A602 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC8944512B84399E0021A602 /* IOKit.framework */; };
+		FC8944542B8439A20021A602 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC8944532B8439A20021A602 /* AppKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +29,12 @@
 /* Begin PBXFileReference section */
 		FC8944372B8438B50021A602 /* mre */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mre; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC89443A2B8438B50021A602 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		FC8944492B8439580021A602 /* glfw3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glfw3.h; sourceTree = "<group>"; };
+		FC89444A2B8439580021A602 /* glfw3native.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glfw3native.h; sourceTree = "<group>"; };
+		FC89444C2B8439840021A602 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libglfw3.a; sourceTree = "<group>"; };
+		FC89444F2B8439960021A602 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		FC8944512B84399E0021A602 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		FC8944532B8439A20021A602 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +42,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC89444D2B8439840021A602 /* libglfw3.a in Frameworks */,
+				FC8944542B8439A20021A602 /* AppKit.framework in Frameworks */,
+				FC8944502B8439960021A602 /* OpenGL.framework in Frameworks */,
+				FC8944522B84399E0021A602 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +57,7 @@
 			children = (
 				FC8944392B8438B50021A602 /* mre */,
 				FC8944382B8438B50021A602 /* Products */,
+				FC89444E2B8439960021A602 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,9 +72,46 @@
 		FC8944392B8438B50021A602 /* mre */ = {
 			isa = PBXGroup;
 			children = (
+				FC89444B2B8439760021A602 /* lib */,
 				FC89443A2B8438B50021A602 /* main.c */,
+				FC8944472B8439580021A602 /* include */,
 			);
 			path = mre;
+			sourceTree = "<group>";
+		};
+		FC8944472B8439580021A602 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				FC8944482B8439580021A602 /* GLFW */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		FC8944482B8439580021A602 /* GLFW */ = {
+			isa = PBXGroup;
+			children = (
+				FC8944492B8439580021A602 /* glfw3.h */,
+				FC89444A2B8439580021A602 /* glfw3native.h */,
+			);
+			path = GLFW;
+			sourceTree = "<group>";
+		};
+		FC89444B2B8439760021A602 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				FC89444C2B8439840021A602 /* libglfw3.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		FC89444E2B8439960021A602 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FC8944532B8439A20021A602 /* AppKit.framework */,
+				FC8944512B84399E0021A602 /* IOKit.framework */,
+				FC89444F2B8439960021A602 /* OpenGL.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +291,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = ./mre/include/;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/mre/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -247,6 +304,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = ./mre/include/;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/mre/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
